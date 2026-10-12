@@ -1,332 +1,98 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agnal Varghese Pindiyan · Data Analyst</title>
-<meta name="description" content="Agnal Varghese Pindiyan, Data Analyst. MSc Data Science, Christ University. SQL, Excel, Power BI, Python.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --paper: #FAFBFC;
-    --ink: #18252F;
-    --muted: #5B6B78;
-    --grid: #E6ECF1;
-    --rule: #D5DEE5;
-    --accent: #1F5F6B;
-    --accent-soft: #D7E8EB;
-    --amber: #B87A12;
-    --bar-base: #C9D4DC;
-    --gutter: 16px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #121A20;
-      --ink: #E7EDF2;
-      --muted: #9AAAB6;
-      --grid: #1D2830;
-      --rule: #2A3842;
-      --accent: #74B6C2;
-      --accent-soft: #1E3A40;
-      --amber: #E3AA45;
-      --bar-base: #3A4A55;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #121A20; --ink: #E7EDF2; --muted: #9AAAB6; --grid: #1D2830; --rule: #2A3842;
-    --accent: #74B6C2; --accent-soft: #1E3A40; --amber: #E3AA45; --bar-base: #3A4A55;
-  }
+Agnal Varghese Pindiyan
+Work
+Experience
+Contact
+I check the data before I trust the answer.
+I'm Agnal, a data analyst with an MSc in Data Science from Christ University, a statistics degree before that, and a published IEEE paper on handling missing data. I work in SQL, Excel, Power BI and Python, and I'm looking for a Data Analyst or Business Analyst role.
 
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "IBM Plex Sans", system-ui, sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-    font-variant-numeric: tabular-nums;
-  }
-  a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  a:hover { text-decoration-thickness: 2px; }
-  a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+Download resume
+Email me
+Call +91 85904 34096
+Featured project
+Telecom customer churn
+243,553 customer records · Python, Pandas, Scikit-learn · 2026
 
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+In my first version, the most accurate model caught none of the customers who left.
 
-  /* Top bar */
-  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; padding-top: 22px; padding-bottom: 22px; flex-wrap: wrap; }
-  .top .name { font-family: "IBM Plex Sans Condensed", sans-serif; font-weight: 600; font-size: 18px; color: var(--ink); text-decoration: none; }
-  .top nav { display: flex; gap: 20px; font-size: 15px; }
-  .top nav a { color: var(--muted); text-decoration: none; }
-  .top nav a:hover { color: var(--ink); }
+About 1 in 5 customers in this dataset churned (20.05%). A model that simply predicts "nobody leaves" is already 80% accurate, so accuracy says very little here. What matters is recall: of the customers who actually left, how many did the model catch?
 
-  /* Hero on graph paper */
-  .hero {
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 24px 24px;
-    background-position: -1px -1px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .hero .wrap { padding-top: 56px; padding-bottom: 64px; }
-  .hero h1 {
-    font-family: "IBM Plex Sans Condensed", sans-serif;
-    font-weight: 600;
-    font-size: clamp(38px, 7vw, 76px);
-    line-height: 1.02;
-    letter-spacing: -0.01em;
-    margin: 0 0 24px;
-    max-width: 14ch;
-  }
-  .hero .lede { font-size: clamp(17px, 2.1vw, 20px); max-width: 58ch; margin: 0 0 32px; background: var(--paper); box-shadow: 0 0 0 8px var(--paper); }
-  .hero .lede strong { font-weight: 600; }
-  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn {
-    display: inline-block; padding: 11px 20px; font-weight: 500; font-size: 16px;
-    text-decoration: none; border: 1.5px solid var(--accent); border-radius: 3px;
-  }
-  .btn.primary { background: var(--accent); color: var(--paper); }
-  .btn.secondary { background: var(--paper); color: var(--accent); }
+Accuracy
+Recall (churners caught)
+Logistic Regression
+51.0%
+48.9%
+Decision Tree
+68.0%
+19.9%
+Random Forest
+79.9%
+0% — caught no churners
+Test set: 48,711 customers, 9,765 of whom churned.
 
-  /* Sections with an axis-label gutter */
-  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
-  section:last-of-type { border-bottom: 0; }
-  .sec { display: grid; grid-template-columns: 1fr; gap: 12px; }
-  .sec > h2 {
-    font-family: "IBM Plex Sans Condensed", sans-serif;
-    font-weight: 500; font-size: 16px; color: var(--muted); margin: 0;
-  }
-  .body { max-width: 720px; }
-  @media (min-width: 900px) {
-    .sec { grid-template-columns: 200px 1fr; gap: 40px; }
-    .sec > h2 { text-align: right; padding-top: 6px; border-right: 1px solid var(--rule); padding-right: 24px; min-height: 100%; }
-  }
+Accuracy and recall from my first version of this analysis, on the same test set. Ranking by accuracy alone would have picked the model that misses every churner.
+So I rebuilt the analysis: a leak-free pipeline, one-hot encoding, dummy baselines and cross-validation. Every model scored a ROC-AUC of 0.50, the same as random guessing, and no feature showed a meaningful link to churn. The data also turned out to be synthetic: city matches state for only 3.6% of customers. My conclusion: this dataset can't predict who will leave, and a model built on it shouldn't be deployed. Knowing when the data can't answer the question is part of the job.
 
-  h3 {
-    font-family: "IBM Plex Sans Condensed", sans-serif;
-    font-weight: 600; font-size: 28px; line-height: 1.15; margin: 0 0 6px;
-  }
-  .meta { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
-  p { margin: 0 0 16px; }
+Read the full analysis on GitHub
 
-  /* Featured exhibit */
-  .finding {
-    font-family: "IBM Plex Sans Condensed", sans-serif;
-    font-weight: 500; font-size: clamp(22px, 3vw, 27px); line-height: 1.25; margin: 0 0 18px;
-  }
-  figure { margin: 28px 0 24px; padding: 22px 22px 16px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); }
-  .legend { display: flex; gap: 18px; font-size: 14px; color: var(--muted); margin-bottom: 18px; flex-wrap: wrap; }
-  .key { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; }
-  .key.acc { background: var(--bar-base); }
-  .key.rec { background: var(--accent); }
-  .model { display: grid; grid-template-columns: 120px 1fr; gap: 6px 14px; align-items: center; margin-bottom: 16px; }
-  .model .label { font-weight: 500; font-size: 15px; grid-row: span 2; line-height: 1.25; }
-  .track { position: relative; height: 18px; display: flex; align-items: center; }
-  .bar { height: 100%; border-radius: 2px; width: var(--w); transform-origin: left; animation: grow 900ms cubic-bezier(.2,.7,.2,1) both; }
-  .bar.acc { background: var(--bar-base); }
-  .bar.rec { background: var(--accent); }
-  .val { font-size: 13px; margin-left: 8px; white-space: nowrap; color: var(--muted); }
-  .val.zero { color: var(--amber); font-weight: 600; margin-left: 0; }
-  .model.rf .label::after { content: "Highest accuracy"; display: block; font-weight: 400; font-size: 12.5px; color: var(--amber); }
-  .baseline { border-top: 1px dashed var(--rule); padding-top: 10px; font-size: 13.5px; color: var(--muted); }
-  figcaption { font-size: 14.5px; color: var(--muted); margin-top: 6px; }
-  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  @media (prefers-reduced-motion: reduce) { .bar { animation: none; } }
-  @media (max-width: 520px) { .model { grid-template-columns: 1fr; } .model .label { grid-row: auto; } figure { padding: 16px 14px 12px; } }
+More projects
+House prices and the real estate market
+In progress
+What drives property prices across 10,000+ listings. Comparing five regression models on MAE, RMSE and R², with a Power BI dashboard of location-wise trends.
 
-  .takeaway { border-left: 3px solid var(--accent); padding: 2px 0 2px 16px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
-  .chips li { font-size: 13.5px; padding: 3px 10px; background: var(--accent-soft); color: var(--ink); border-radius: 3px; }
+Python, Scikit-learn, Power BI · GitHub
 
-  /* Project rows */
-  .rows { list-style: none; margin: 0; padding: 0; }
-  .rows > li { padding: 22px 0; border-top: 1px solid var(--rule); }
-  .rows > li:first-child { border-top: 0; padding-top: 0; }
-  .rows h4 { font-family: "IBM Plex Sans Condensed", sans-serif; font-weight: 600; font-size: 21px; margin: 0 0 4px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
-  .tag { font-family: "IBM Plex Sans", sans-serif; font-size: 12.5px; font-weight: 500; padding: 1px 8px; border-radius: 3px; border: 1px solid currentColor; }
-  .tag.progress { color: var(--amber); }
-  .tag.pub { color: var(--accent); }
-  .rows p { margin: 0 0 6px; }
-  .rows .tools { font-size: 14.5px; color: var(--muted); margin: 0; }
+Loan approval analysis
+Which applicant factors are linked to loan approval: income, education, credit history and property area. Graduates and semi-urban applicants had the most approvals.
 
-  /* Timeline */
-  .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
-  .timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--rule); }
-  .timeline li { position: relative; padding: 0 0 26px 30px; }
-  .timeline li:last-child { padding-bottom: 0; }
-  .timeline li::before { content: ""; position: absolute; left: 0; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: var(--paper); border: 2px solid var(--accent); }
-  .timeline .when { font-size: 14px; color: var(--muted); margin: 0; }
-  .timeline .role { font-weight: 600; margin: 0; }
-  .timeline .what { margin: 4px 0 0; }
+Python, Pandas, Seaborn · GitHub
 
-  .skills { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 0; }
-  .skills div { display: grid; grid-template-columns: 1fr; }
-  .skills dt { font-weight: 600; font-size: 15px; }
-  .skills dd { margin: 0; color: var(--ink); }
-  @media (min-width: 600px) { .skills div { grid-template-columns: 140px 1fr; gap: 16px; } }
+Five ways to fill missing data
+Published, IEEE
+Compared KNN, Random Forest, SVM, mean and median imputation on the Pima Indians Diabetes dataset with 10% simulated missing values. Random Forest performed best, at 0.84 ROC-AUC and 78.18% accuracy.
 
-  footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; }
-  .contact-links { display: flex; gap: 22px; flex-wrap: wrap; font-size: 17px; margin-bottom: 18px; }
-</style>
-</head>
-<body>
+Python, Scikit-learn, GridSearchCV · Paper on IEEE Xplore · GitHub
 
-<header class="wrap top">
-  <a class="name" href="#">Agnal Varghese Pindiyan</a>
-  <nav aria-label="Sections">
-    <a href="#work">Work</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+Experience and education
+May – Aug 2025
 
-<div class="hero">
-  <div class="wrap">
-    <h1>I check the data before I trust the answer.</h1>
-    <p class="lede">I'm <strong>Agnal</strong>, a data analyst with an MSc in Data Science from Christ University, a statistics degree before that, and a published IEEE paper on handling missing data. I work in SQL, Excel, Power BI and Python, and I'm looking for a Data Analyst or Business Analyst role.</p>
-    <div class="actions">
-      <a class="btn primary" href="resume.pdf">Download resume</a>
-      <a class="btn secondary" href="mailto:agnalvp2000@gmail.com">Email me</a>
-      <a class="btn secondary" href="tel:+918590434096">Call +91 85904 34096</a>
-    </div>
-  </div>
-</div>
+Data Science Intern, Zidio Development, Bangalore
 
-<main>
-  <section id="work">
-    <div class="wrap sec">
-      <h2>Featured project</h2>
-      <div class="body">
-        <h3>Telecom customer churn</h3>
-        <p class="meta">243,553 customer records · Python, Pandas, Scikit-learn · 2026</p>
+Cleaned 100K+ financial records, analysed trends and seasonality, and compared ARIMA, Prophet and LSTM forecasting models.
 
-        <p class="finding">The most accurate model caught none of the customers who left.</p>
-        <p>About 1 in 5 customers in this dataset churned (20.05%). A model that simply predicts "nobody leaves" is already 80% accurate, so accuracy says very little here. What matters is <em>recall</em>: of the customers who actually left, how many did the model catch?</p>
+2022 – 2024
 
-        <figure aria-labelledby="fig-cap">
-          <div class="legend" aria-hidden="true">
-            <span><span class="key acc"></span>Accuracy</span>
-            <span><span class="key rec"></span>Recall (churners caught)</span>
-          </div>
+M.Sc. Data Science, Christ University, Pune
 
-          <div class="model">
-            <span class="label">Logistic Regression</span>
-            <div class="track"><div class="bar acc" style="--w:51.0%"></div><span class="val">51.0%</span></div>
-            <div class="track"><div class="bar rec" style="--w:48.9%"></div><span class="val">48.9%</span></div>
-          </div>
-          <div class="model">
-            <span class="label">Decision Tree</span>
-            <div class="track"><div class="bar acc" style="--w:68.0%"></div><span class="val">68.0%</span></div>
-            <div class="track"><div class="bar rec" style="--w:19.9%"></div><span class="val">19.9%</span></div>
-          </div>
-          <div class="model rf">
-            <span class="label">Random Forest</span>
-            <div class="track"><div class="bar acc" style="--w:79.9%"></div><span class="val">79.9%</span></div>
-            <div class="track"><span class="val zero">0% — caught no churners</span></div>
-          </div>
+73.24%. Published research on machine learning-based imputation.
 
-          <p class="baseline">Test set: 48,711 customers, 9,765 of whom churned.</p>
-          <figcaption id="fig-cap">Accuracy and recall for three classifiers on the same test set. Ranking by accuracy alone would have picked the model that misses every churner.</figcaption>
-        </figure>
+Jan – May 2024
 
-        <p class="takeaway">Digging further, every model's precision sat at about 20%, the same as the churn rate itself, and every feature had near-zero correlation with churn. My conclusion: this dataset carries almost no signal about who will leave, and a model built on it shouldn't be deployed. Knowing when the data can't answer the question is part of the job.</p>
+AI / ML Intern, CHRIST InfoTech, Pune
 
-        <p><a href="https://github.com/agnal1890/telecom-churn-analysis">Read the full analysis on GitHub</a></p>
-      </div>
-    </div>
-  </section>
+Built MeetDoc, a meeting transcription tool that identifies speakers and summarises decisions and action items.
 
-  <section>
-    <div class="wrap sec">
-      <h2>More projects</h2>
-      <div class="body">
-        <ul class="rows">
-          <li>
-            <h4>House prices and the real estate market <span class="tag progress">In progress</span></h4>
-            <p>What drives property prices across 10,000+ listings. Comparing five regression models on MAE, RMSE and R², with a Power BI dashboard of location-wise trends.</p>
-            <p class="tools">Python, Scikit-learn, Power BI · <a href="https://github.com/agnal1890/house-price-analysis">GitHub</a></p>
-          </li>
-          <li>
-            <h4>Loan approval analysis</h4>
-            <p>Which applicant factors are linked to loan approval: income, education, credit history and property area. Graduates and semi-urban applicants had the most approvals.</p>
-            <p class="tools">Python, Pandas, Seaborn · <a href="https://github.com/agnal1890/loan-approval-analysis">GitHub</a></p>
-          </li>
-          <li>
-            <h4>Five ways to fill missing data <span class="tag pub">Published, IEEE</span></h4>
-            <p>Compared KNN, Random Forest, SVM, mean and median imputation on the Pima Indians Diabetes dataset with 10% simulated missing values. Random Forest performed best, at 0.84 ROC-AUC and 78.18% accuracy.</p>
-            <p class="tools">Python, Scikit-learn, GridSearchCV · <a href="https://ieeexplore.ieee.org/document/10739330">Paper on IEEE Xplore</a> · <a href="https://github.com/agnal1890/ml-imputation-research">GitHub</a></p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
+2019 – 2022
 
-  <section id="experience">
-    <div class="wrap sec">
-      <h2>Experience and education</h2>
-      <div class="body">
-        <ol class="timeline" reversed>
-          <li>
-            <p class="when">May – Aug 2025</p>
-            <p class="role">Data Science Intern, Zidio Development, Bangalore</p>
-            <p class="what">Cleaned 100K+ financial records, analysed trends and seasonality, and compared ARIMA, Prophet and LSTM forecasting models.</p>
-          </li>
-          <li>
-            <p class="when">2022 – 2024</p>
-            <p class="role">M.Sc. Data Science, Christ University, Pune</p>
-            <p class="what">73.24%. Published research on machine learning-based imputation.</p>
-          </li>
-          <li>
-            <p class="when">Jan – May 2024</p>
-            <p class="role">AI / ML Intern, CHRIST InfoTech, Pune</p>
-            <p class="what">Built MeetDoc, a meeting transcription tool that identifies speakers and summarises decisions and action items.</p>
-          </li>
-          <li>
-            <p class="when">2019 – 2022</p>
-            <p class="role">B.Sc. Statistics, Vimala College, Thrissur</p>
-            <p class="what">78.42%.</p>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
+B.Sc. Statistics, Vimala College, Thrissur
 
-  <section>
-    <div class="wrap sec">
-      <h2>Skills</h2>
-      <div class="body">
-        <dl class="skills">
-          <div><dt>Data and BI</dt><dd>SQL (MySQL), Excel (Pivot Tables), Power BI, Tableau</dd></div>
-          <div><dt>Programming</dt><dd>Python (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn), R</dd></div>
-          <div><dt>Analysis</dt><dd>Data cleaning, exploratory analysis, descriptive statistics, correlation and trend analysis</dd></div>
-          <div><dt>Modelling</dt><dd>Regression, classification, time-series forecasting, cross-validation</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
+78.42%.
 
-  <section id="contact">
-    <div class="wrap sec">
-      <h2>Contact</h2>
-      <div class="body">
-        <p class="finding">Hiring a data analyst? I'd be glad to talk.</p>
-        <div class="contact-links">
-          <a href="mailto:agnalvp2000@gmail.com">agnalvp2000@gmail.com</a>
-          <a href="tel:+918590434096">+91 85904 34096</a>
-          <a href="https://www.linkedin.com/in/agnal-varghese-pindiyan-103885250/">LinkedIn</a>
-          <a href="https://github.com/agnal1890">GitHub</a>
-        </div>
-        <p class="meta">Based in Thrissur, Kerala.</p>
-      </div>
-    </div>
-  </section>
-</main>
+Skills
+Data and BI
+SQL (MySQL), Excel (Pivot Tables), Power BI, Tableau
+Programming
+Python (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn), R
+Analysis
+Data cleaning, exploratory analysis, descriptive statistics, correlation and trend analysis
+Modelling
+Regression, classification, time-series forecasting, cross-validation
+Contact
+Hiring a data analyst? I'd be glad to talk.
 
-<footer class="wrap">© 2026 Agnal Varghese Pindiyan</footer>
+agnalvp2000@gmail.com
++91 85904 34096
+LinkedIn
+GitHub
+Based in Thrissur, Kerala.
 
-</body>
-</html>
+© 2026 Agnal Varghese Pindiyan
