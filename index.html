@@ -35,22 +35,21 @@ So I rebuilt the analysis: a leak-free pipeline, one-hot encoding, dummy baselin
 Read the full analysis on GitHub
 
 More projects
-House prices and the real estate market
-In progress
-What drives property prices across 10,000+ listings. Comparing five regression models on MAE, RMSE and R², with a Power BI dashboard of location-wise trends.
+What sets a house price
+21,613 home sales in King County, Washington. Location sets the price per square foot, which varies 3.9× across zipcodes; size, build grade and waterfront do the rest. A gradient-boosted model prices homes with a typical error of 8% (R² 0.90), up from 19% in my first version, mainly by treating zipcode as a category and modelling prices on a log scale.
 
-Python, Scikit-learn, Power BI · GitHub
+Python, Scikit-learn · GitHub
 
 Loan approval analysis
-Which applicant factors are linked to loan approval: income, education, credit history and property area. Graduates and semi-urban applicants had the most approvals.
+What decides home loan approval across 614 applications. Credit history dominates: 80% approval for applicants who meet guidelines against 8% for those who don't, while income makes no visible difference. A one-line credit-history rule matched machine learning in cross-validation (80.9% accuracy).
 
-Python, Pandas, Seaborn · GitHub
+Python, SQL, Scikit-learn · GitHub
 
-Five ways to fill missing data
+Does the way you fill missing data matter?
 Published, IEEE
-Compared KNN, Random Forest, SVM, mean and median imputation on the Pima Indians Diabetes dataset with 10% simulated missing values. Random Forest performed best, at 0.84 ROC-AUC and 78.18% accuracy.
+Compared median, KNN, Random Forest and SVM imputation with three classifiers on the Pima diabetes dataset, where 10.7% of values are missing. Random Forest was the strongest classifier (mean F1 66.5%). Revisiting it with repeated cross-validation, I found the imputation method moves F1 by about 1 point, against ±4.7 points of normal variation between data splits, while Random Forest imputation recovered the true values most accurately.
 
-Python, Scikit-learn, GridSearchCV · Paper on IEEE Xplore · GitHub
+Python, Scikit-learn · Paper on IEEE Xplore · GitHub
 
 Experience and education
 May – Aug 2025
